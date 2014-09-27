@@ -1,6 +1,6 @@
-organization := "com.swissmonte.trading"
+organization := "org.akkatrading"
 
-name := "engulfing"
+name := "akka-trading"
 
 version := "1.0"
 
