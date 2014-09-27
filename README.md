@@ -1,7 +1,7 @@
 akka-trading
 ============
 
-Backtesting + Live Trading Framework built on top of Akka/Spray
+Scala Backtesting + Live Trading Framework built on top of Akka/Spray
 
 What is akka-trading good for?
 ==============================
