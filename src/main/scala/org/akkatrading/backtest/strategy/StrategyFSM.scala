@@ -3,17 +3,11 @@ package org.akkatrading.backtest.strategy
 import akka.actor.{Actor, FSM}
 import org.akkatrading.backtest.strategy.StrategyFSM._
 
-import scala.math.{log => ln}
-
 object StrategyFSM {
 
   sealed trait State
 
   case object Flat extends State
-
-  case object Long extends State
-
-  case object Short extends State
 
   sealed trait Data
 
@@ -24,6 +18,8 @@ object StrategyFSM {
 class StrategyFSM extends Actor with FSM[State, Data] {
 
   startWith(Flat, Empty)
+
+  // TODO: your strategy here
 
   whenUnhandled {
     case Event(e, s) =>
