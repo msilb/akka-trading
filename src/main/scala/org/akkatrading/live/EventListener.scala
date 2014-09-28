@@ -75,6 +75,9 @@ class EventListener(hostConnector: ActorRef, orderManager: ActorRef) extends Act
 
   implicit val timeout: Timeout = Timeout(15.seconds)
 
+  import org.akkatrading.live.EventListener.EventJsonProtocol._
+  import spray.httpx.SprayJsonSupport._
+
   def receive = {
     case SubscribeToEvents =>
       hostConnector ! Get(s"/v1/events?accountIds=$accountId") ~> addCredentials(OAuth2BearerToken(authToken))
