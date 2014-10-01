@@ -19,7 +19,7 @@ object EventListener {
 
   case object SubscribeToEvents
 
-  case class OrderExecuted(side: String, spawnedTradeId: Int)
+  case class OrderFilled(side: String, spawnedTradeId: Int)
 
   case object OrderCanceled
 
@@ -86,7 +86,7 @@ class EventListener(hostConnector: ActorRef, orderManager: ActorRef) extends Act
         val entity = HttpEntity(ContentTypes.`application/json`, line)
         val transactionMaybe = entity.as[AccountEvent].fold(error => None, event => Some(event.transaction))
         transactionMaybe.map {
-          case t if t.`type` == "ORDER_FILLED" => orderManager ! OrderExecuted(t.side.get, t.tradeOpened.map(_.id).getOrElse(t.tradeReduced.get.id))
+          case t if t.`type` == "ORDER_FILLED" => orderManager ! OrderFilled(t.side.get, t.tradeOpened.map(_.id).getOrElse(t.tradeReduced.get.id))
           case t if t.`type` == "ORDER_CANCEL" => orderManager ! OrderCanceled
           case t if t.`type` == "STOP_LOSS_FILLED" => orderManager ! StopLossFilled
           case t if t.`type` == "TAKE_PROFIT_FILLED" => orderManager ! TakeProfitFilled

@@ -25,9 +25,9 @@ class Backtest extends Actor with ActorLogging {
 
   def receive = {
     case PriceTicks(priceTicks) =>
-      val engulfingStrategyFsm = actorOf(Props[StrategyFSM], "engulfing")
+      val strategyFsm = actorOf(Props[StrategyFSM], "strategyFsm")
       for (tick <- priceTicks) {
-        engulfingStrategyFsm ! tick
+        strategyFsm ! tick
       }
     case LogMessage(d, intervalPnl, tradePnl, logMsg) =>
       println(s"${DateTimeFormatter.ofPattern("dd.MM.uuuu\tHH:mm:ss").format(d)}\t${formatter.format(intervalPnl)}\t${formatter.format(tradePnl)}\t$logMsg")

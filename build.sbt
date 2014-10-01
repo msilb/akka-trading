@@ -1,3 +1,5 @@
+packageArchetype.java_application
+
 organization := "org.akkatrading"
 
 name := "akka-trading"
