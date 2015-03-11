@@ -1,3 +1,5 @@
+**NOTE: This project is currently outdated. Check out my [scalanda](https://github.com/msilb/scalanda) library, which provides a convenient Scala/Akka based wrapper for Oanda's REST API**
+
 akka-trading
 ============
 
