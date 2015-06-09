@@ -12,3 +12,5 @@ Usage
 =====
 
 Just clone the repo and drop your trading logic into `StrategyFSM.scala`. Don't forget to modify `AuthInfo.scala` to include your own account ID and access token for Oanda's REST API.
+
+**Note: If you are simply looking for a way to connect to Oanda REST API using Scala/Akka, check out my [Scalanda](https://github.com/msilb/scalanda) project**
